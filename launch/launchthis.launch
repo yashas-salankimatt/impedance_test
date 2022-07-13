@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+    <include file="$(find sensor_compensation)/launch/runthis.launch"/>
+    <node name="ground_truth_test" pkg="impedance_test" type="ground_truth_test.py" output="screen" />
+</launch>
