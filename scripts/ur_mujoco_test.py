@@ -14,7 +14,7 @@ import time
 
 joint_state_moveit = [0,0,0,0,0,0]
 # kp = [1000000000, 100, 10, 10, 1, 1]
-kp = [10, 100, 10, 10, 1, 1]
+kp = [10, 100, 10, 10, 2, 2]
 kd = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
 step = 0.0005
 joint_error_previous = [0,0,0,0,0,0]
@@ -25,6 +25,7 @@ def joint_state_moveit_callback(data):
     joint_state_moveit = data.position
 
 def PID_control(joint_state, joint_target):
+    joint_state = joint_state[:6]
     global joint_error_previous 
     joint_torque = [0,0,0,0,0,0]
     
@@ -54,35 +55,12 @@ sim.step()
 val = -2
 q=[]
 while True:
-    # print(joint_state)
     joint_target = joint_state_moveit
     joint_state = sim.data.qpos
     torques = PID_control(joint_state, joint_target)
-    # print(torques)
-
-    # sim.data.ctrl[0] = 100000000
-    # sim.data.set_joint_qpos('shoulder_pan_joint', -1.57) 
     for i in range(0,6):
         sim.data.ctrl[i] = torques[i]
-    # sim.data.ctrl[0] = -3
-    # sim.data.ctrl[1] = -30
-    # sim.data.ctrl[2] = -3
-    # sim.data.ctrl[3] = -3
-    # sim.data.ctrl[4] = -3
-    # sim.data.ctrl[5] = -3
-    # print(sim.data.)
-    # sim.data.set_joint_qpos('shoulder_pan_joint', joint_state[0])
-    # sim.data.set_joint_qpos('shoulder_lift_joint', joint_state[1])
-    # sim.data.set_joint_qpos('elbow_joint', joint_state[2])
-    # sim.data.set_joint_qpos('wrist_1_joint', joint_state[3])
-    # sim.data.set_joint_qpos('wrist_2_joint', joint_state[4])
-    # sim.data.set_joint_qpos('wrist_3_joint',   joint_state[5])
-    print(sim.data.actuator_force[0],sim.data.actuator_force[1])
-    # for i in range(0,6):
-        # sim.data.set_joint_qpos(joint_names[i]+'_joint', val)
-    #     sim.data.ctrl[i] = 3.14
-        # print(joint_state[i])
-    # print(sim.data.get_joint_qpos('elbow_joint'))
-    # print(sim.data.sensordata)
+    print(sim.data.sensordata[0])
+    # print(sim.data.actuator_force[0],sim.data.actuator_force[1])
     sim.step()
     viewer.render()
