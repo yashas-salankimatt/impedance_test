@@ -1,0 +1,29 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/yashas/Documents/cmu/sr_ws/devel/include/**",
+        "/home/yashas/Documents/cmu/space_robot_ws/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/opt/openrobots/include/**",
+        "/opt/openrobots/include/**",
+        "/home/yashas/Documents/cmu/sr_ws/src/orbit_ros/impedance_matching/include/**",
+        "/home/yashas/Documents/cmu/impedance_match_test/src/impedance_test/include/**",
+        "/home/yashas/Documents/cmu/sr_ws/src/orbit_ros/netft_utils/include/**",
+        "/home/yashas/Documents/cmu/sr_ws/src/orbit_ros/sensor_compensation/include/**",
+        "/home/yashas/Documents/cmu/sr_ws/src/space_robot/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

@@ -1,0 +1,14 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/yashas/Documents/cmu/sr_ws/devel/lib/python3/dist-packages",
+        "/home/yashas/Documents/cmu/space_robot_ws/devel/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages",
+        "/opt/openrobots/lib/python3.8/site-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/yashas/Documents/cmu/sr_ws/devel/lib/python3/dist-packages",
+        "/home/yashas/Documents/cmu/space_robot_ws/devel/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages",
+        "/opt/openrobots/lib/python3.8/site-packages"
+    ]
+}
