@@ -4,9 +4,6 @@
 <!-- |    EDITING THIS FILE BY HAND IS NOT RECOMMENDED                                 | -->
 <!-- =================================================================================== -->
 <robot name="ur3" xmlns:xacro="http://wiki.ros.org/xacro">
-<mujoco>
-    <compiler meshdir="../meshes/collision" balanceinertia="true" discardvisual="false"/>
-  </mujoco>
   <gazebo>
     <plugin filename="libgazebo_ros_control.so" name="ros_control">
       <!--robotNamespace>/</robotNamespace-->
@@ -57,7 +54,7 @@
   <link name="base_link">
     <visual>
       <geometry>
-        <mesh filename="../meshes/visual/base.stl"/>
+        <mesh filename="package://impedance_test/meshes/visual/base.dae"/>
       </geometry>
       <material name="LightGrey">
         <color rgba="0.7 0.7 0.7 1.0"/>
@@ -65,7 +62,7 @@
     </visual>
     <collision>
       <geometry>
-        <mesh filename="../meshes/collision/base.stl"/>
+        <mesh filename="package://impedance_test/meshes/collision/base.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -85,7 +82,7 @@
   <link name="shoulder_link">
     <visual>
       <geometry>
-        <mesh filename="../meshes/visual/shoulder.stl"/>
+        <mesh filename="package://impedance_test/meshes/visual/shoulder.dae"/>
       </geometry>
       <material name="LightGrey">
         <color rgba="0.7 0.7 0.7 1.0"/>
@@ -93,7 +90,7 @@
     </visual>
     <collision>
       <geometry>
-        <mesh filename="../meshes/collision/shoulder.stl"/>
+        <mesh filename="package://impedance_test/meshes/collision/shoulder.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -113,7 +110,7 @@
   <link name="upper_arm_link">
     <visual>
       <geometry>
-        <mesh filename="../meshes/visual/upperarm.stl"/>
+        <mesh filename="package://impedance_test/meshes/visual/upperarm.dae"/>
       </geometry>
       <material name="LightGrey">
         <color rgba="0.7 0.7 0.7 1.0"/>
@@ -121,7 +118,7 @@
     </visual>
     <collision>
       <geometry>
-        <mesh filename="../meshes/collision/upperarm.stl"/>
+        <mesh filename="package://impedance_test/meshes/collision/upperarm.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -141,7 +138,7 @@
   <link name="forearm_link">
     <visual>
       <geometry>
-        <mesh filename="../meshes/visual/forearm.stl"/>
+        <mesh filename="package://impedance_test/meshes/visual/forearm.dae"/>
       </geometry>
       <material name="LightGrey">
         <color rgba="0.7 0.7 0.7 1.0"/>
@@ -149,7 +146,7 @@
     </visual>
     <collision>
       <geometry>
-        <mesh filename="../meshes/collision/forearm.stl"/>
+        <mesh filename="package://impedance_test/meshes/collision/forearm.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -169,7 +166,7 @@
   <link name="wrist_1_link">
     <visual>
       <geometry>
-        <mesh filename="../meshes/visual/wrist1.stl"/>
+        <mesh filename="package://impedance_test/meshes/visual/wrist1.dae"/>
       </geometry>
       <material name="LightGrey">
         <color rgba="0.7 0.7 0.7 1.0"/>
@@ -177,7 +174,7 @@
     </visual>
     <collision>
       <geometry>
-        <mesh filename="../meshes/collision/wrist1.stl"/>
+        <mesh filename="package://impedance_test/meshes/collision/wrist1.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -197,7 +194,7 @@
   <link name="wrist_2_link">
     <visual>
       <geometry>
-        <mesh filename="../meshes/visual/wrist2.stl"/>
+        <mesh filename="package://impedance_test/meshes/visual/wrist2.dae"/>
       </geometry>
       <material name="LightGrey">
         <color rgba="0.7 0.7 0.7 1.0"/>
@@ -205,7 +202,7 @@
     </visual>
     <collision>
       <geometry>
-        <mesh filename="../meshes/collision/wrist2.stl"/>
+        <mesh filename="package://impedance_test/meshes/collision/wrist2.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -225,7 +222,7 @@
   <link name="wrist_3_link">
     <visual>
       <geometry>
-        <mesh filename="../meshes/visual/wrist3.stl"/>
+        <mesh filename="package://impedance_test/meshes/visual/wrist3.dae"/>
       </geometry>
       <material name="LightGrey">
         <color rgba="0.7 0.7 0.7 1.0"/>
@@ -233,7 +230,7 @@
     </visual>
     <collision>
       <geometry>
-        <mesh filename="../meshes/collision/wrist3.stl"/>
+        <mesh filename="package://impedance_test/meshes/collision/wrist3.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -361,13 +358,13 @@
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="../meshes/collision/grounded_peg.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://impedance_test/meshes/collision/grounded_peg.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <origin rpy="0 0 0" xyz="0 0 0"/>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="../meshes/collision/grounded_peg.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://impedance_test/meshes/collision/grounded_peg.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <origin rpy="0 0 0" xyz="0 0 0"/>
     </collision>

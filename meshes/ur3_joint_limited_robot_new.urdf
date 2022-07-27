@@ -4,10 +4,10 @@
 <!-- |    EDITING THIS FILE BY HAND IS NOT RECOMMENDED                                 | -->
 <!-- =================================================================================== -->
 <robot name="ur3" xmlns:xacro="http://wiki.ros.org/xacro">
-<mujoco>
-    <compiler meshdir="../meshes/collision" balanceinertia="true" discardvisual="false"/>
-  </mujoco>
-  <gazebo>
+<!-- <mujoco>
+    <compiler meshdir="collision" balanceinertia="true" discardvisual="false"/>
+  </mujoco> -->
+  <gazebo>es
     <plugin filename="libgazebo_ros_control.so" name="ros_control">
       <!--robotNamespace>/</robotNamespace-->
       <!--robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType-->
@@ -57,7 +57,7 @@
   <link name="base_link">
     <visual>
       <geometry>
-        <mesh filename="../meshes/visual/base.stl"/>
+        <mesh filename="visual/base.stl"/>
       </geometry>
       <material name="LightGrey">
         <color rgba="0.7 0.7 0.7 1.0"/>
@@ -65,7 +65,7 @@
     </visual>
     <collision>
       <geometry>
-        <mesh filename="../meshes/collision/base.stl"/>
+        <mesh filename="collision/base.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -85,7 +85,7 @@
   <link name="shoulder_link">
     <visual>
       <geometry>
-        <mesh filename="../meshes/visual/shoulder.stl"/>
+        <mesh filename="visual/shoulder.stl"/>
       </geometry>
       <material name="LightGrey">
         <color rgba="0.7 0.7 0.7 1.0"/>
@@ -93,7 +93,7 @@
     </visual>
     <collision>
       <geometry>
-        <mesh filename="../meshes/collision/shoulder.stl"/>
+        <mesh filename="collision/shoulder.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -113,7 +113,7 @@
   <link name="upper_arm_link">
     <visual>
       <geometry>
-        <mesh filename="../meshes/visual/upperarm.stl"/>
+        <mesh filename="visual/upperarm.stl"/>
       </geometry>
       <material name="LightGrey">
         <color rgba="0.7 0.7 0.7 1.0"/>
@@ -121,7 +121,7 @@
     </visual>
     <collision>
       <geometry>
-        <mesh filename="../meshes/collision/upperarm.stl"/>
+        <mesh filename="collision/upperarm.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -141,7 +141,7 @@
   <link name="forearm_link">
     <visual>
       <geometry>
-        <mesh filename="../meshes/visual/forearm.stl"/>
+        <mesh filename="visual/forearm.stl"/>
       </geometry>
       <material name="LightGrey">
         <color rgba="0.7 0.7 0.7 1.0"/>
@@ -149,7 +149,7 @@
     </visual>
     <collision>
       <geometry>
-        <mesh filename="../meshes/collision/forearm.stl"/>
+        <mesh filename="collision/forearm.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -169,7 +169,7 @@
   <link name="wrist_1_link">
     <visual>
       <geometry>
-        <mesh filename="../meshes/visual/wrist1.stl"/>
+        <mesh filename="visual/wrist1.stl"/>
       </geometry>
       <material name="LightGrey">
         <color rgba="0.7 0.7 0.7 1.0"/>
@@ -177,7 +177,7 @@
     </visual>
     <collision>
       <geometry>
-        <mesh filename="../meshes/collision/wrist1.stl"/>
+        <mesh filename="collision/wrist1.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -197,7 +197,7 @@
   <link name="wrist_2_link">
     <visual>
       <geometry>
-        <mesh filename="../meshes/visual/wrist2.stl"/>
+        <mesh filename="visual/wrist2.stl"/>
       </geometry>
       <material name="LightGrey">
         <color rgba="0.7 0.7 0.7 1.0"/>
@@ -205,7 +205,7 @@
     </visual>
     <collision>
       <geometry>
-        <mesh filename="../meshes/collision/wrist2.stl"/>
+        <mesh filename="collision/wrist2.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -225,7 +225,7 @@
   <link name="wrist_3_link">
     <visual>
       <geometry>
-        <mesh filename="../meshes/visual/wrist3.stl"/>
+        <mesh filename="visual/wrist3.stl"/>
       </geometry>
       <material name="LightGrey">
         <color rgba="0.7 0.7 0.7 1.0"/>
@@ -233,7 +233,7 @@
     </visual>
     <collision>
       <geometry>
-        <mesh filename="../meshes/collision/wrist3.stl"/>
+        <mesh filename="collision/wrist3.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -361,13 +361,13 @@
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="../meshes/collision/grounded_peg.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="collision/grounded_peg.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <origin rpy="0 0 0" xyz="0 0 0"/>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="../meshes/collision/grounded_peg.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="collision/grounded_peg.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <origin rpy="0 0 0" xyz="0 0 0"/>
     </collision>
@@ -380,7 +380,7 @@
   </joint>
   <link name="world"/>
   <joint name="world_joint" type="fixed">
-    <parent link="world"/>
+    <parent link="ground_plane_box"/>
     <child link="base_link"/>
     <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
   </joint>

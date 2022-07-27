@@ -42,7 +42,7 @@ def move():
 
     twistGoal = Twist()
     twistGoal.linear.x = 0.210
-    twistGoal.linear.y = -.357
+    twistGoal.linear.y = -.4
     twistGoal.linear.z = 0.054
     twistGoal.angular.x = 1.57079625
     twistGoal.angular.y = 0
