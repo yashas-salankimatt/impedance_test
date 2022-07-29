@@ -66,9 +66,10 @@
                                 <joint name="wrist_3_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-3.14159 3.14159" class="UR3e"/>
                                 <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" mesh="wrist3" />
                                 <geom type="mesh" rgba="0.7 0.7 0.7 1" mesh="wrist3" />
-                                <site name='force_sensor' pos="0 0 0" size='5 5 5' rgba='0 0 1 1' type='sphere' group='1'/>
+                                <site name='force_sensor' pos="0 0 0" size='15 15 15' rgba='0 0 1 1' type='sphere' group='1'/>
                                 <geom pos="0 0.0819 0" quat="0.707107 -0.707107 0 0" type="mesh" contype="0" conaffinity="0" group="1" mesh="grounded_peg" />
                                 <geom pos="0 0.0819 0" quat="0.707107 -0.707107 0 0" type="mesh" mesh="grounded_peg" />
+                                <site name='mep:ee' pos="0 0.0819 0" quat="0.707107 -0.707107 0 0" size='0.01 0.01 0.01' rgba='0 0 1 1' type='sphere' group='1'/>
                             </body>
                         </body>
                     </body>

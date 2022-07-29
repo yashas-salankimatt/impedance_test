@@ -9,12 +9,32 @@ from matplotlib.animation import FuncAnimation
 from mujoco_py.generated import const
 from scipy.signal import butter, lfilter, freqz
 import time
+import tf
+from geometry_msgs.msg import Twist
+import impedance_match
+from std_msgs.msg import String, Bool
+
 
 joint_state_moveit = [0,0,0,0,0,0]
 kp = [50, 50, 50, 50, 50, 50]
 kd = [1, 1, 1, 1, 1, 1]
 step = 0.0005
 joint_error_previous = [0,0,0,0,0,0]
+pose = Twist()
+
+pub = rospy.Publisher('/impedance_mathcing/goal', Twist, queue_size=10)
+
+def callback_init(data):
+    if data.data is True:
+        xdes = object_id.idc()
+        print(xdes)
+        pose.linear.x = xdes[0]
+        pose.linear.y = xdes[1]
+        pose.linear.z = xdes[2]
+        pose.angular.x = xdes[3]
+        pose.angular.y = xdes[4]
+        pose.angular.z = xdes[5]
+        pub.publish(pose)
 
 def joint_state_moveit_callback(data):
     global joint_state_moveit
@@ -48,21 +68,16 @@ sim = MjSim(model)
 viewer = MjViewer(sim)
 sim.step()
 
-# trans = 0
-# while (type(trans) == int):
-#     try:
-#         (trans, rot) = listener.lookupTransform('base_link', 'wrist_3_link', rospy.Time(0))
-#     except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException):
-#         continue
-
+x0 = [0,0.2,0.05,0,0,0]
+object_id = impedance_match.idcontrol(sim,x0)
 
 while not rospy.is_shutdown():
+    sub = rospy.Subscriber("/init_flag", Bool, callback_init)
     joint_target = joint_state_moveit
     joint_state = sim.data.qpos
     torques = PID_control(joint_state, joint_target)
-    for i in range(0,6):
+    for i in range(0,5):
         sim.data.ctrl[i] = torques[i]
-    print(sim.data.sensordata[0])
     # print(sim.data.actuator_force[0],sim.data.actuator_force[1])
     sim.step()
     viewer.render()
