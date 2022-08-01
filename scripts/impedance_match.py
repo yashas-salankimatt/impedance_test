@@ -28,13 +28,14 @@ class idcontrol():
         Jtinv = np.linalg.inv(np.transpose(J))
         Jinv = np.linalg.inv(J)
         ## Get bias terms (coriollis/gravity) ##
-        h=self.sim.data.qfrc_bias
+        h=self.sim.data.qfrc_bias[:6]
 
         ## Get full mass matrix ##
         mass_matrix = np.ndarray(shape=(len(self.sim.data.qvel) ** 2,), dtype=np.float64, order='C')
         mujoco_py.cymj._mj_fullM(self.sim.model, mass_matrix, self.sim.data.qM)
         mass_matrix=np.reshape(mass_matrix, (len(self.sim.data.qvel), len(self.sim.data.qvel)))
-
+        
+        mass_matrix =  mass_matrix[:6, :6]
         ## Get time derivative of Jacobian ##
         dJdt=(J-self.J0)/self.sim.model.opt.timestep
         self.J0=np.array(J)

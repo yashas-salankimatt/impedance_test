@@ -11,7 +11,7 @@ from scipy.signal import butter, lfilter, freqz
 import time
 import tf
 from geometry_msgs.msg import Twist
-import impedance_match
+import impedance_match_new
 from std_msgs.msg import String, Bool
 
 
@@ -23,11 +23,20 @@ joint_error_previous = [0,0,0,0,0,0]
 pose = Twist()
 
 pub = rospy.Publisher('/impedance_mathcing/goal', Twist, queue_size=10)
+x0 = [0,0.2,0.05,0,0,0]
+dt = 0.1
+
+
+def ave_F():
+    xforce = np.shape(sim.data.sensordata)
+    
+    return F_ave
+
 
 def callback_init(data):
     if data.data is True:
-        xdes = object_id.idc()
-        print(xdes)
+        F_ave = ave_F()
+        xdes = object_id.idc(x0,F_ave,dt)
         pose.linear.x = xdes[0]
         pose.linear.y = xdes[1]
         pose.linear.z = xdes[2]
@@ -68,13 +77,14 @@ sim = MjSim(model)
 viewer = MjViewer(sim)
 sim.step()
 
-x0 = [0,0.2,0.05,0,0,0]
-object_id = impedance_match.idcontrol(sim,x0)
+
+object_id = impedance_match_new.idcontrol(sim)
 
 while not rospy.is_shutdown():
     sub = rospy.Subscriber("/init_flag", Bool, callback_init)
     joint_target = joint_state_moveit
     joint_state = sim.data.qpos
+    sim.data.ctrl[6] = -1
     torques = PID_control(joint_state, joint_target)
     for i in range(0,5):
         sim.data.ctrl[i] = torques[i]

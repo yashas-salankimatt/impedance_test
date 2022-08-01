@@ -28,6 +28,7 @@
         <motor ctrllimited="false" joint="wrist_1_joint" name="actuator:wrist_1" gear="10"/>
         <motor ctrllimited="false" joint="wrist_2_joint" name="actuator:wrist_2" gear="10"/>
         <motor ctrllimited="false" joint="wrist_3_joint" name="actuator:wrist_3" gear="10"/>
+        <motor ctrllimited="false" joint="joint:2" name="actuator:joint2" gear="10"/>
     </actuator>
     
     <sensor>
@@ -79,7 +80,7 @@
 
         <body name="nozzle" pos="0 0.5 .035" quat="1 0 0 0">
             <!-- SELECT EITHER SLIDE OR FREE JOINT TYPE -->
-            <joint type="slide" pos="0 0 0" axis="0 1 0" name="joint:2" damping="2" stiffness="500" />
+            <joint type="slide" pos="0 0 0" axis="0 1 0" name="joint:2"/>
             <!-- <freejoint/> -->
             <inertial pos="0 0 0" mass="10.0" diaginertia="0.001 0.001 0.001"/>
             <!-- <site name='torque_sensor' pos="0 0 -0.005" size='0.005 0.005 0.005' rgba='0 0 1 1' type='sphere' group='1'/>             -->
